@@ -30,7 +30,13 @@ html {
 .picture .pic_left,
 .picture .pic_right {
   width: 40vh;
-  height: 40vh;  
+  height: 40vh;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: transform 0.3s linear;
+}
+
+.picture .pic_left:hover,
+.picture .pic_right:hover {
+  transform: scale(0.9);
 }
