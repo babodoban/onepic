@@ -47,7 +47,7 @@ function getRightPicture() {
 
 function initRightApp() {
   getRightPicture();
-  loadRightPicture();
+  // loadRightPicture();
   return;
 }
 
