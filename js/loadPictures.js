@@ -26,7 +26,7 @@ function getPictures() {
     .then(response => response.json())
     .then(json => {
       const images = json;
-      if (images[0].urls && images[0].urls.full && images[1].urls && images[1].urls.full) {
+      if (images[0].urls.full && images[1].urls.full) {
         const fullUrl1 = images[0].urls.full;
         const fullUrl2 = images[1].urls.full;
         savePictures(fullUrl1,fullUrl2);
@@ -47,7 +47,6 @@ function savePictures(imageUrl1,imageUrl2) {
     url2: imageUrl2
   };
   localStorage.setItem("pics", JSON.stringify(imageObject));
-  loadPictures();
   return;
 }
 
