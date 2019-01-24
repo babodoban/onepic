@@ -22,7 +22,7 @@ function loadPictures(roundID) {
 function persistPictures() {
   const stringImages = JSON.stringify(selectedImages);
   localStorage.setItem("selectedImages", stringImages);
-  console.log(nextRound);
+  //console.log(nextRound);
   loadPictures(nextRound);
 }
 
@@ -36,7 +36,7 @@ function onClick(event) {
   const target = event.target;
   const selectedBackgroundImage = target.style.backgroundImage;
   const selectedImage = selectedBackgroundImage.slice(5,-2);
-  console.log(selectedImage);
+  //console.log(selectedImage);
   savePicture(selectedImage);
 }
 
