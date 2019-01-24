@@ -1,10 +1,14 @@
+const startingTournamentID = 1;
+
+const imageCount = tournamentInfos[startingTournamentID].roundTotal * 2;
+
 const UNSPLASH_API_KEY =
   "918700288c4f8c1d0a72ec407f5f9a8ef30ebd20cfd9288a3ab70400cd07d81f";
-const UNSPLASH_URL = `https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_API_KEY}&query=portrait&orientation=portrait&count=8`;
+
+const UNSPLASH_URL = `https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_API_KEY}&query=portrait&orientation=portrait&count=${imageCount}`;
 
 const imageUrls = [];
 
-const startingTournamentID = 1;
 
 function getPictures() {
   fetch(UNSPLASH_URL)
@@ -47,6 +51,8 @@ return true;
 function startTournament(tournamentID){
   getTournamentPictures(tournamentID);
   startRound(startingRoundID);
+  const tournament = tournamentInfos.find(tournament => tournament.id === tournamentID);
+  tournamentName.innerHTML = tournament.name;
 }
 
 function startGame() {
