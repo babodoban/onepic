@@ -5,7 +5,7 @@ const pic_left = document.querySelector(".pic_left"),
 
 const selectedImages = [];
 
-let nextRound = 0;
+let currentRound = 0;
 
 function loadPictures(roundID) {
       pic_left.style.backgroundImage = `url(${
@@ -14,16 +14,22 @@ function loadPictures(roundID) {
       pic_right.style.backgroundImage = `url(${
         tournamentImages[(2*roundID)-1]
       })`;
-      nextRound = roundID + 1;
-      console.log(nextRound);
+      currentRound = roundID;
+      console.log(`round : ${currentRound}`);
       return;
     }
 
 function persistPictures() {
-  const stringImages = JSON.stringify(selectedImages);
-  localStorage.setItem("selectedImages", stringImages);
-  //console.log(nextRound);
-  loadPictures(nextRound);
+  const currentTournament = findTournamentInfo(currentTournamentID);
+   if(currentTournament.roundTotal === currentRound){
+      startTournament(currentTournamentID+1);
+      currentRound = 0;
+   }
+   else{
+    const stringImages = JSON.stringify(selectedImages);
+    localStorage.setItem("selectedImages", stringImages);
+    loadPictures(currentRound + 1);
+  }
 }
 
 function savePicture(text) {
@@ -36,7 +42,7 @@ function onClick(event) {
   const target = event.target;
   const selectedBackgroundImage = target.style.backgroundImage;
   const selectedImage = selectedBackgroundImage.slice(5,-2);
-  //console.log(selectedImage);
+  console.log(selectedImage);
   savePicture(selectedImage);
 }
 

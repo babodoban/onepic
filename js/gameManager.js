@@ -1,6 +1,6 @@
 const startingTournamentID = 1;
 
-const imageCount = tournamentInfos[startingTournamentID].roundTotal * 2;
+const imageCount = tournamentInfos[startingTournamentID - 1].roundTotal * 2;
 
 const UNSPLASH_API_KEY =
   "918700288c4f8c1d0a72ec407f5f9a8ef30ebd20cfd9288a3ab70400cd07d81f";
@@ -48,11 +48,17 @@ for (var i = json.length - 1; i >= 0; i--) {
 return true;
 }
 
+function findTournamentInfo(tournamentID) {
+  return tournamentInfos.find(tournament => tournament.id === tournamentID);
+}
+
 function startTournament(tournamentID){
   getTournamentPictures(tournamentID);
   startRound(startingRoundID);
-  const tournament = tournamentInfos.find(tournament => tournament.id === tournamentID);
+  const tournament = findTournamentInfo(tournamentID);
   tournamentName.innerHTML = tournament.name;
+  currentTournamentID = tournamentID;
+  console.log(`tournament : ${currentTournamentID}`);
 }
 
 function startGame() {

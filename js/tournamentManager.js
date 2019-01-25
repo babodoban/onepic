@@ -1,7 +1,8 @@
 
 const tournamentName = document.querySelector(".tournament");
-const tournamentImages = [];
+let tournamentImages = [];
 const startingRoundID =   1;
+let currentTournamentID = 0;
 const tournamentInfos = [
 {
   id : 1,
@@ -16,7 +17,7 @@ const tournamentInfos = [
 {
   id : 3,
   name : "Final",
-  roundTotal : 4
+  roundTotal : 1
 }
 ]
 
@@ -27,15 +28,14 @@ function getTournamentPictures(tournamentID){
 	for (var i = gameImages.length - 1; i >= 0; i--) {
 		tournamentImages.push(gameImages[i]);
 	}
-	}
+}
+  else{
+    const savedSelectedImages = localStorage.getItem("selectedImages")
+    tournamentImages = JSON.parse(savedSelectedImages);
+  }
 }
 
 
 function startRound(roundID){
 	loadPictures(roundID);
-}
-
-function startTournament(tournamentID){
-  getTournamentPictures(tournamentID);
-  startRound(startingRoundID);
 }
