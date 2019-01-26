@@ -3,7 +3,7 @@ const picture = document.querySelector(".picture");
 const pic_left = document.querySelector(".pic_left"),
   pic_right = document.querySelector(".pic_right");
 
-const selectedImages = [];
+let selectedImages = [];
 
 let currentRound = 0;
 
@@ -21,13 +21,13 @@ function loadPictures(roundID) {
 
 function persistPictures() {
   const currentTournament = findTournamentInfo(currentTournamentID);
-   if(currentTournament.roundTotal === currentRound){
-      startTournament(currentTournamentID+1);
-      currentRound = 0;
-   }
-   else{
     const stringImages = JSON.stringify(selectedImages);
     localStorage.setItem("selectedImages", stringImages);
+   if(currentTournament.roundTotal === currentRound){
+      startTournament(currentTournamentID+1);
+      currentRound = 1;
+   }
+   else{
     loadPictures(currentRound + 1);
   }
 }

@@ -1,5 +1,9 @@
 const startingTournamentID = 1;
 
+const mainTitle = document.querySelector(".main_title");
+
+const picTitles = document.querySelectorAll(".pic_title");
+
 const imageCount = tournamentInfos[startingTournamentID - 1].roundTotal * 2;
 
 const UNSPLASH_API_KEY =
@@ -52,18 +56,40 @@ function findTournamentInfo(tournamentID) {
   return tournamentInfos.find(tournament => tournament.id === tournamentID);
 }
 
+function showResult(){
+  mainTitle.innerHTML = "WINNER";
+  picture.style.backgroundImage = `url(${selectedImages[0]})`;
+  picture.style.width = '400px';
+  picture.style.height = '400px';
+  pic_left.style.backgroundImage = 'none';
+  pic_right.style.backgroundImage = 'none';
+  tournamentName.innerHTML = '';
+  picTitles.forEach(function(el) {
+  el.innerHTML = '';
+  });
+}
+
 function startTournament(tournamentID){
-  getTournamentPictures(tournamentID);
-  startRound(startingRoundID);
-  const tournament = findTournamentInfo(tournamentID);
-  tournamentName.innerHTML = tournament.name;
-  currentTournamentID = tournamentID;
-  console.log(`tournament : ${currentTournamentID}`);
+  if(tournamentID == 4){
+    showResult();  
+
+  }
+  else{
+    getTournamentPictures(tournamentID);
+    startRound(startingRoundID);
+    const tournament = findTournamentInfo(tournamentID);
+    tournamentName.innerHTML = tournament.name;
+    currentTournamentID = tournamentID;
+    console.log(`tournament : ${currentTournamentID}`);
+    localStorage.removeItem("selectedImages");
+    selectedImages = [];
+  }
 }
 
 function startGame() {
  getPictures();
  startTournament(startingTournamentID);
+ localStorage.removeItem("selectedImages");
 }
 
 startGame();

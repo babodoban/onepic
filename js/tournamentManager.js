@@ -30,7 +30,7 @@ function getTournamentPictures(tournamentID){
 	}
 }
   else{
-    const savedSelectedImages = localStorage.getItem("selectedImages")
+    const savedSelectedImages = localStorage.getItem("selectedImages");
     tournamentImages = JSON.parse(savedSelectedImages);
   }
 }
