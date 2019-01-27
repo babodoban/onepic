@@ -35,8 +35,8 @@ html {
 
 .picture .pic_left,
 .picture .pic_right {
-  width: 40vh;
-  height: 40vh;
+  width: 40vw;
+  height: 40vw;
   background-repeat: no-repeat;
   background-size: cover;
   transition: transform 0.3s linear;

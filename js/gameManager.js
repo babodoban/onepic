@@ -21,7 +21,7 @@ function getPictures() {
       const images = json;
       if (checkUrls(images)) {
         for (var i = images.length - 1; i >= 0; i--) {
-          imageUrls.push(images[i].urls.full);
+          imageUrls.push(images[i].urls.regular);
         }
         savePictures(imageUrls);
       } else {
@@ -42,7 +42,7 @@ function savePictures(imageUrls) {
 
 function checkUrls(json){
 for (var i = json.length - 1; i >= 0; i--) {
-  if(json[i].urls.full){
+  if(json[i].urls.regular){
     continue;
   }
   else{
@@ -59,8 +59,8 @@ function findTournamentInfo(tournamentID) {
 function showResult(){
   mainTitle.innerHTML = "WINNER";
   picture.style.backgroundImage = `url(${selectedImages[0]})`;
-  picture.style.width = '400px';
-  picture.style.height = '400px';
+  picture.style.width = '80vmin';
+  picture.style.height = '80vmin';
   pic_left.style.backgroundImage = 'none';
   pic_right.style.backgroundImage = 'none';
   tournamentName.innerHTML = '';
