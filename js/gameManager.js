@@ -14,7 +14,7 @@ const UNSPLASH_URL = `https://api.unsplash.com/photos/random/?client_id=${UNSPLA
 const imageUrls = [];
 
 
-function getPictures() {
+function getPictures(x,callbackfunc) {
   fetch(UNSPLASH_URL)
     .then(response => response.json())
     .then(json => {
@@ -27,7 +27,8 @@ function getPictures() {
       } else {
         getPictures();
       }
-    });
+    })
+    .then(function(){callbackfunc(x);});
   return;
 }
 
@@ -86,9 +87,9 @@ function startTournament(tournamentID){
   }
 }
 
+
 function startGame() {
- getPictures();
- setTimeout(function() { startTournament(startingTournamentID); }, 1000);
+ getPictures(startingTournamentID,startTournament);
  localStorage.removeItem("selectedImages");
 }
 
