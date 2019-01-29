@@ -88,7 +88,7 @@ function startTournament(tournamentID){
 
 function startGame() {
  getPictures();
- startTournament(startingTournamentID);
+ setTimeout(function() { startTournament(startingTournamentID); }, 1000);
  localStorage.removeItem("selectedImages");
 }
 
