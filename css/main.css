@@ -42,7 +42,10 @@ html {
   transition: transform 0.3s linear;
 }
 
+@media (any-hover: hover) {
 .picture .pic_left:hover,
 .picture .pic_right:hover {
   transform: scale(0.9);
 }
+}
+
