@@ -37,7 +37,7 @@ function savePicture(text) {
   persistPictures();
 }
 
-function onClick(event) {
+function onClick01(event) {
   event.preventDefault();
   const target = event.target;
   const selectedBackgroundImage = target.style.backgroundImage;
@@ -46,4 +46,9 @@ function onClick(event) {
   savePicture(selectedImage);
 }
 
-picture.addEventListener("click", onClick);
+function onClick02(event) {
+  event.preventDefault();
+  location.reload(true);
+}
+
+picture.addEventListener("click", onClick01);

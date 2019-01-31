@@ -26,6 +26,11 @@ html {
   margin: auto;
 }
 
+.footer {
+  font-size: 15px;
+text-align: center;
+}
+
 .picture .pic_area {
   display: flex;
   align-items: center;

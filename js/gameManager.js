@@ -4,6 +4,8 @@ const mainTitle = document.querySelector(".main_title");
 
 const picTitles = document.querySelectorAll(".pic_title");
 
+const footer = document.querySelector(".footer");
+
 const imageCount = tournamentInfos[startingTournamentID - 1].roundTotal * 2;
 
 const UNSPLASH_API_KEY =
@@ -68,7 +70,19 @@ function showResult(){
   picTitles.forEach(function(el) {
   el.innerHTML = '';
   });
+  var retry = document.createElement("div"); 
+  var label = document.createTextNode("retry"); 
+  retry.appendChild(label); 
+  document.body.insertBefore(retry,footer);
+  retry.style.backgroundColor = "yellow";
+  retry.style.width = '20vmin';
+  retry.style.height = '5vmin';
+  retry.style.margin = 'auto';
+  retry.style.textAlign = "center";
+  retry.addEventListener("click", onClick02);
 }
+
+
 
 function startTournament(tournamentID){
   if(tournamentID == 4){
