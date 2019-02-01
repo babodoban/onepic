@@ -51,4 +51,5 @@ function onClick02(event) {
   location.reload(true);
 }
 
-picture.addEventListener("click", onClick01);
+pic_left.addEventListener("click", onClick01);
+pic_right.addEventListener("click", onClick01);
