@@ -86,6 +86,8 @@ function showResult(){
   retry.style.backgroundColor = "yellow";
   retry.style.width = '20vmin';
   retry.style.height = '5vmin';
+  retry.style.position = 'relative';
+  retry.style.top = '20px'
   retry.style.margin = 'auto';
   retry.style.textAlign = "center";
   retry.addEventListener("click", onClick02);
