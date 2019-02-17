@@ -4,7 +4,11 @@ const mainTitle = document.querySelector(".main_title");
 
 const picTitles = document.querySelectorAll(".pic_title");
 
+const footer = document.querySelector(".footer");
+
 const imageCount = tournamentInfos[startingTournamentID - 1].roundTotal * 2;
+
+const picArea = document.querySelectorAll(".pic_area"); 
 
 const UNSPLASH_API_KEY =
   "918700288c4f8c1d0a72ec407f5f9a8ef30ebd20cfd9288a3ab70400cd07d81f";
@@ -62,13 +66,34 @@ function showResult(){
   picture.style.backgroundImage = `url(${selectedImages[0]})`;
   picture.style.width = '80vmin';
   picture.style.height = '80vmin';
-  pic_left.style.backgroundImage = 'none';
-  pic_right.style.backgroundImage = 'none';
+  picArea.forEach(function(el) {
+    if (el.hasChildNodes()) {
+      while(el.childElementCount)
+      {el.removeChild(el.firstChild);}
+      }
+    else {
+    console.log('no child');
+      }
+  });
   tournamentName.innerHTML = '';
   picTitles.forEach(function(el) {
   el.innerHTML = '';
   });
+  var retry = document.createElement("div"); 
+  var label = document.createTextNode("retry"); 
+  retry.appendChild(label); 
+  document.body.insertBefore(retry,footer);
+  retry.style.backgroundColor = "yellow";
+  retry.style.width = '20vmin';
+  retry.style.height = '5vmin';
+  retry.style.position = 'relative';
+  retry.style.top = '20px'
+  retry.style.margin = 'auto';
+  retry.style.textAlign = "center";
+  retry.addEventListener("click", onClick02);
 }
+
+
 
 function startTournament(tournamentID){
   if(tournamentID == 4){

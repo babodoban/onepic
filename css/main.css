@@ -26,6 +26,14 @@ html {
   margin: auto;
 }
 
+
+.footer {
+  position: relative;
+  top: 50px;
+  font-size: 15px;
+  text-align: center;
+}
+
 .picture .pic_area {
   display: flex;
   align-items: center;
@@ -39,13 +47,13 @@ html {
   height: 40vw;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: transform 0.05s linear;
+  transition: transform 0.1s linear;
 }
 
 @media (any-hover: hover) {
 .picture .pic_left:hover,
 .picture .pic_right:hover {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 }
 
